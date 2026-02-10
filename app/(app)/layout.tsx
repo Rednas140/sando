@@ -1,6 +1,19 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { createClient } from "@/utils/supabase/server";
+import { signOut } from "./actions";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <div className="min-h-screen">
       <a
@@ -49,6 +62,25 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 >
                   Done
                 </Link>
+              </li>
+              <li>
+                {user ? (
+                  <form action={signOut}>
+                    <button
+                      className="rounded px-2 py-1 hover:bg-black/5"
+                      type="submit"
+                    >
+                      Logout
+                    </button>
+                  </form>
+                ) : (
+                  <Link
+                    className="rounded px-2 py-1 hover:bg-black/5"
+                    href="/login"
+                  >
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </nav>

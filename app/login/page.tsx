@@ -33,8 +33,8 @@ export default async function Page({ searchParams }: LoginPageProps) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-sm space-y-6">
-      <header className="space-y-2">
+    <main className="mx-auto my-auto w-full max-w-sm mt-8 md:mt-20 flex flex-col gap-4 p-5 md:p-0">
+      <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold">Login</h1>
         <p className="text-sm text-black/60">
           Use your Sando account credentials.
@@ -50,10 +50,10 @@ export default async function Page({ searchParams }: LoginPageProps) {
         </div>
       ) : null}
 
-      <form className="space-y-4" action={login}>
+      <form className="flex flex-col gap-4" action={login}>
         <input type="hidden" name="next" value={nextPath} />
 
-        <label className="space-y-1 text-sm font-medium">
+        <label className="flex flex-col gap-2 text-sm font-medium">
           <span>Email</span>
           <input
             className="w-full rounded border border-black/10 px-3 py-2 text-sm"
@@ -64,7 +64,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
           />
         </label>
 
-        <label className="space-y-1 text-sm font-medium">
+        <label className="flex flex-col gap-2 text-sm font-medium">
           <span>Password</span>
           <input
             className="w-full rounded border border-black/10 px-3 py-2 text-sm"
@@ -77,11 +77,11 @@ export default async function Page({ searchParams }: LoginPageProps) {
 
         <button
           type="submit"
-          className="w-full rounded bg-black px-3 py-2 text-sm font-semibold text-white"
+          className="w-full rounded bg-black px-3 py-2 text-sm font-semibold text-white cursor-pointer hover:bg-neutral-900 transition-colors"
         >
           Sign in
         </button>
       </form>
-    </div>
+    </main>
   );
 }

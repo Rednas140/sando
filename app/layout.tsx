@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hubotSans.variable} ${monaSans.variable} antialiased`}
+        className={`${hubotSans.variable} ${monaSans.variable} antialiased bg-lightBeige text-neutral-900`}
       >
         {children}
       </body>

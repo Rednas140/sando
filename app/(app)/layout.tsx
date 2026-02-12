@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { signOut } from "./actions";
+import { NavLink } from "@/components/NavLink";
 
 export default async function AppLayout({
   children,
@@ -32,54 +33,24 @@ export default async function AppLayout({
           <nav aria-label="Primary">
             <ul className="flex gap-3 text-sm">
               <li>
-                <Link
-                  className="rounded px-2 py-1 hover:bg-black/5"
-                  href="/inbox"
-                >
-                  Inbox
-                </Link>
+                <NavLink href="/inbox">Inbox</NavLink>
               </li>
               <li>
-                <Link
-                  className="rounded px-2 py-1 hover:bg-black/5"
-                  href="/today"
-                >
-                  Today
-                </Link>
+                <NavLink href="/today">Today</NavLink>
               </li>
               <li>
-                <Link
-                  className="rounded px-2 py-1 hover:bg-black/5"
-                  href="/week"
-                >
-                  Week
-                </Link>
+                <NavLink href="/week">Week</NavLink>
               </li>
               <li>
-                <Link
-                  className="rounded px-2 py-1 hover:bg-black/5"
-                  href="/done"
-                >
-                  Done
-                </Link>
+                <NavLink href="/done">Done</NavLink>
               </li>
               <li>
                 {user ? (
                   <form action={signOut}>
-                    <button
-                      className="rounded px-2 py-1 hover:bg-black/5"
-                      type="submit"
-                    >
-                      Logout
-                    </button>
+                    <button type="submit">Logout</button>
                   </form>
                 ) : (
-                  <Link
-                    className="rounded px-2 py-1 hover:bg-black/5"
-                    href="/login"
-                  >
-                    Login
-                  </Link>
+                  <NavLink href="/login">Login</NavLink>
                 )}
               </li>
             </ul>
